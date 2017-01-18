@@ -9,6 +9,7 @@
 		$scope.items = '';
 		$scope.message = '';
 		$scope.typeMessage = '';
+		$scope.showInfoMessage = false;
 
 		$scope.messages = {
 			success: {
@@ -23,8 +24,13 @@
 		};
 
 		$scope.checkLunch = function() {
+			$scope.showInfoMessage = false;
 			var countItems = $scope.items.split(',').filter(function(value) {
-				return value.trim() !== "";
+				var valid = value.trim() !== "";
+				if (!valid && $scope.items.length) {
+					$scope.showInfoMessage = true;
+				}
+				return valid;
 			}).length;
 
 			if (countItems === 0) {

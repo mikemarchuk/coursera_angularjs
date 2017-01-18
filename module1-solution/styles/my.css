@@ -12,3 +12,12 @@
 	padding: 5px;
 	margin-top: 5px;
 }
+.message.success {
+	color: green;
+}
+.message.warning {
+	color: green;
+}
+.message.error {
+	color: red;
+}

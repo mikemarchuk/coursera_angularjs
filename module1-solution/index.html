@@ -19,7 +19,7 @@
              class="form-control {{typeMessage}}"
              ng-model="items">
 
-             <div class="alert alert-info" role="alert">
+             <div class="alert alert-info" role="alert" ng-show="showInfoMessage">
                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                  NOT consider and empty item, i.e., <code>, ,</code> as an item towards to the count
              </div>
@@ -27,7 +27,7 @@
          <div class="form-group">
              <button class="btn btn-default" ng-click="checkLunch();">Check If Too Much</button>
          </div>
-         <div class="form-group message">
+         <div class="form-group message {{typeMessage}}">
              {{message}}
          </div>
    </div>
