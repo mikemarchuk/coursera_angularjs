@@ -1,0 +1,14 @@
+#lunch-menu.success {
+	border: 1px solid green;
+}
+#lunch-menu.warning {
+	border: 1px solid green;
+}
+#lunch-menu.error {
+	border: 1px solid red;
+}
+.alert {
+	height: 30px;
+	padding: 5px;
+	margin-top: 5px;
+}
