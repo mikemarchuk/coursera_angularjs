@@ -62,7 +62,7 @@
                 var foundItems = result.data.menu_items;
 
                 return foundItems.filter(function(item) {
-                    return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+                    return item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
                 });
             });
         };
