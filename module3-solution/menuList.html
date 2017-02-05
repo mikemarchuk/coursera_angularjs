@@ -1,20 +1,20 @@
 <div class="menu-list">
-    <h3>Menu list: {{ items.length }} items</h3>
+    <h3>Menu list: {{ list.items.length }} items</h3>
 
-    <table ng-show="items.length > 0">
+    <table ng-show="list.items.length > 0">
         <tr>
             <td>Name</td>
             <td>Short name</td>
             <td>Description</td>
         </tr>
-        <tr ng-repeat="item in items">
+        <tr ng-repeat="item in list.items">
             <td>{{ item.name }}</td>
             <td>{{ item.short_name }}</td>
             <td>{{ item.description }}</td>
             <td>
-                <button ng-click="onRemove({index: $index});">Don't want this one!</button>
+                <button ng-click="list.onRemove({index: $index});">Don't want this one!</button>
             </td>
         </tr>
     </table>
-    <span class="label-warning label" ng-show="items.length === 0 && isFinded">Nothing found</span>
+    <span class="label-warning label" ng-show="list.items.length === 0 && list.searched">Nothing found</span>
 </div>

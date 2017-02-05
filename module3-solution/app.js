@@ -4,45 +4,52 @@
     angular.module('NarrowItDownApp', [])
         .controller('NarrowItDownController', NarrowItDownController)
         .service('MenuSearchService', MenuSearchService)
-        .directive('foundItems', FoundItems);
+        .directive('foundItems', FoundItemsDirective);
 
-    function FoundItems() {
+    function FoundItemsDirective() {
         var ddo = {
             templateUrl: 'menuList.html',
+            restrict: 'E',
             scope: {
-                items: '<',
-                isFinded: '<',
+                items: '<foundItems',
+                searched: '<isSearched',
                 onRemove: '&'
-            }
+            },
+            controller: FoundItemsDirectiveController,
+            controllerAs: 'list',
+            bindToController: true
         };
         return ddo;
+    }
+
+    function FoundItemsDirectiveController() {
+        var list = this;
     }
 
     NarrowItDownController.$inject = ['MenuSearchService'];
     function NarrowItDownController(MenuSearchService) {
         var narrowItDown = this;
 
-        narrowItDown.isFinded = false;
+        narrowItDown.isSearched = false;
         narrowItDown.found = [];
         narrowItDown.criteria = '';
 
         narrowItDown.find = function () {
-            narrowItDown.isFinded = true;
-
             if (narrowItDown.criteria === '') {
-                console.log('Nothing found');
+                narrowItDown.isSearched = true;
                 return;
             }
             var promise = MenuSearchService.getMatchedMenuItems(narrowItDown.criteria);
             promise
               .then(function (response) {
+                  narrowItDown.isSearched = true;
                   narrowItDown.found = response;
                   if (!narrowItDown.found.length) {
                       console.log('Nothing found');
                   }
               })
               .catch(function (errorResponse) {
-                  console.log(errorResponse.message);
+                  narrowItDown.isSearched = true;
               });
         };
 
