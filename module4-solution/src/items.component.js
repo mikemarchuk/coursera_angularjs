@@ -2,6 +2,12 @@
     'use strict';
 
     angular.module('MenuApp')
-        .component('items', {});
+        .component('items', {
+            templateUrl: 'templates/components/items.html',
+            bindings: {
+                items: '<',
+                categoryName: '<'
+            }
+        });
 
 })();

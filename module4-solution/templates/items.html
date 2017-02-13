@@ -1,0 +1,9 @@
+<h1>Our items of {{ itemsCtrl.categoryName }}:</h1>
+
+<ol class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="categories">Categories</a></li>
+  <li class="active">Items of {{ itemsCtrl.categoryName }}</li>
+</ol>
+
+<items items="itemsCtrl.items"></items>
