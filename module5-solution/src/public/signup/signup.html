@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Sign Up</h1>
+  <form name='signUpForm' novalidate ng-controller="SignUpController as signUp">
+
+    <input type="text" name="firstName" placeholder="Pick a first name"
+           ng-model="signUp.user.firstName"
+           required
+           minlength="4"
+           ng-maxlength="10">
+    <span
+        ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched">
+            First name must be at least 4 characters long
+          </span>
+    <span ng-if="signUpForm.firstName.$error.maxlength && signUpForm.firstName.$touched">
+            First name must not be longer than 10 characters
+          </span>
+    <br>
+
+    <input type="text" name="lastName" placeholder="Pick a last name"
+           ng-model="signUp.user.lastName"
+           required
+           minlength="4"
+           ng-maxlength="10">
+    <span
+        ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched">
+            Last name must be at least 4 characters long
+          </span>
+    <span ng-if="signUpForm.lastName.$error.maxlength && signUpForm.lastName.$touched">
+            Last name must not be longer than 10 characters
+          </span>
+    <br>
+
+    <input type="email" name="email" placeholder="Email"
+           ng-model="signUp.user.email"
+           required>
+    <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+    <br>
+
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+           ng-model="signUp.user.phone"
+           pattern="(\d{3})-(\d{3})-(\d{4})"
+           required>
+    <span ng-if="signUpForm.phone.$invalid && signUpForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+    <br>
+
+    <input type="text" name="favoriteDish" placeholder="Your favorite dish"
+           ng-model="signUp.user.favoriteDish"
+           required favorite-dish>
+    <span ng-if="signUpForm.favoriteDish.$invalid && signUpForm.favoriteDish.$touched">
+            No such menu number exists
+          </span>
+    <span ng-if="signUp.submited && signUp.isFavoriteDishValid">
+            Your information has been saved
+          </span>
+
+    <br>
+
+    <button
+        ng-disabled="signUpForm.$invalid"
+        ng-click="signUp.submit()">Submit</button>
+  </form>
+</div>
